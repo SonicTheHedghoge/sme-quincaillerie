@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quincaillerie SME — Taourit, Houmt Souk 4180, Djerba</title>
+  <meta name="description" content="Quincaillerie SME à Taourit, Houmt Souk 4180, Djerba. Outillage professionnel, matériaux de construction, peinture, plomberie, brouettes et livraison sur chantier. Tél: 23 435 363.">
+  <link rel="preload" href="/models/fix_it_felix.glb" as="fetch" crossorigin fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="hero-stage" id="hero-stage">
+    <!-- Architectural 4-Column Vertical Grid Overlay -->
+    <div class="grid-backdrop" aria-hidden="true">
+      <div class="grid-col grid-col-1"></div>
+      <div class="grid-col grid-col-2"></div>
+      <div class="grid-col grid-col-3 monolith-panel"></div>
+      <div class="grid-col grid-col-4"></div>
+    </div>
+
+    <!-- Ambient Particle Field Canvas -->
+    <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- 3D WebGL Canvas for Fix-It Felix GLB Model -->
+    <div class="model-viewport" id="model-viewport">
+      <canvas id="felix-canvas" aria-label="Modèle 3D interactif Fix-It Felix — Mascotte Quincaillerie SME"></canvas>
+
+      <!-- Signature Anamorphic Optical Flare (tracks 3D model highlight) -->
+      <div class="optical-flare" id="optical-flare" aria-hidden="true">
+        <div class="flare-halo"></div>
+        <div class="flare-ring"></div>
+        <div class="flare-streak-h"></div>
+        <div class="flare-streak-v"></div>
+        <div class="flare-core"></div>
+      </div>
+
+      <!-- Loading Indicator -->
+      <div class="model-loader" id="model-loader" role="status" aria-live="polite">
+        <span class="loader-ring" aria-hidden="true"></span>
+        <span class="loader-text">CHARGEMENT 3D FIX-IT FELIX...</span>
+      </div>
+    </div>
+
+    <!-- Top Navigation Bar aligned to architectural grid -->
+    <header class="hero-header">
+      <!-- Top-Left Circular Seal Emblem (inspired by reference image) -->
+      <a href="#hero-stage" class="seal-badge" aria-label="Quincaillerie SME Djerba — Accueil">
+        <svg class="seal-svg" viewBox="0 0 120 120" role="img" aria-label="Sceau Quincaillerie SME Djerba">
+          <defs>
+            <path id="sealTextPath" d="M 60, 60 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+          </defs>
+          <!-- Outer precision radial ticks -->
+          <g class="seal-ticks" stroke="rgba(255,255,255,0.42)" stroke-width="1" aria-hidden="true">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.28)" stroke-dasharray="1.5 4.2" stroke-width="3.5" />
+          </g>
+          <text class="seal-curved-text" fill="rgba(255,255,255,0.88)" font-size="6.3" letter-spacing="2.35">
+            <textPath href="#sealTextPath" startOffset="0%">
+              QUINCAILLERIE SME • DJERBA 4180 •
+            </textPath>
+          </text>
+          <text x="60" y="66" text-anchor="middle" class="seal-monogram" fill="#ffffff">SME</text>
+        </svg>
+      </a>
+
+      <!-- Grid-Aligned Navigation Links -->
+      <nav class="hero-nav" aria-label="Navigation principale">
+        <ul class="nav-list">
+          <li class="nav-item nav-col-3-start">
+            <button type="button" class="nav-link" data-open-dialog="about">_À PROPOS</button>
+          </li>
+          <li class="nav-item nav-col-3-mid">
+            <button type="button" class="nav-link" data-open-dialog="contact">_CONTACT</button>
+          </li>
+          <li class="nav-item nav-col-4-start">
+            <button type="button" class="nav-link" data-open-dialog="map">_LOCALISATION</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Top-Right Hamburger Button with Coral-Red Dot -->
+      <div class="header-menu-zone">
+        <button type="button" class="menu-trigger" id="menu-trigger" aria-label="Ouvrir la fiche complète Quincaillerie SME" data-open-dialog="all">
+          <span class="menu-bar bar-1" aria-hidden="true"></span>
+          <span class="menu-bar bar-2" aria-hidden="true"></span>
+          <span class="menu-bar bar-3" aria-hidden="true"></span>
+          <span class="menu-dot" aria-hidden="true"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Left Vertical Slide Pagination (- 01 / - 02 / - 03) -->
+    <aside class="side-pagination" aria-label="Sélection de vue 3D et chapitre">
+      <ul class="page-list">
+        <li>
+          <button type="button" class="page-btn active" data-slide="0" aria-label="Chapitre 01 : Quincaillerie SME Djerba" aria-current="true">
+            <span class="page-tick" aria-hidden="true"></span>
+            <span class="page-num">01</span>
+          </button>
+        </li>
+        <li class="page-divider" aria-hidden="true"><span class="page-subtick"></span></li>
+        <li>
+          <button type="button" class="page-btn" data-slide="1" aria-label="Chapitre 02 : Outillage & Matériaux BTP">
+            <span class="page-tick" aria-hidden="true"></span>
+            <span class="page-num">02</span>
+          </button>
+        </li>
+        <li class="page-divider" aria-hidden="true"><span class="page-subtick"></span></li>
+        <li>
+          <button type="button" class="page-btn" data-slide="2" aria-label="Chapitre 03 : Livraison Houmt Souk">
+            <span class="page-tick" aria-hidden="true"></span>
+            <span class="page-num">03</span>
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Editorial Content Block (Right Half, aligned to Column 3) -->
+    <main class="hero-main">
+      <div class="editorial-block">
+        <!-- Step Progress 01 —— 03 -->
+        <div class="step-indicator" aria-live="polite">
+          <span class="step-current" id="step-current">01</span>
+          <span class="step-line" aria-hidden="true"></span>
+          <span class="step-total">03</span>
+        </div>
+
+        <!-- Primary Serif Display Heading -->
+        <h1 class="hero-title" id="hero-title">
+          <span class="title-line" id="title-line-1">Quincaillerie</span>
+          <span class="title-line" id="title-line-2">SME Djerba.</span>
+        </h1>
+
+        <!-- Editorial Lead inside the Monolith Column -->
+        <p class="hero-description" id="hero-description">
+          La référence de l’outillage professionnel, du bricolage et des matériaux de construction à Taourit, Houmt Souk 4180. Qualité certifiée 5.0★ et livraison directe sur vos chantiers à Djerba.
+        </p>
+
+        <!-- Subtle Editorial Action Controls -->
+        <div class="hero-actions">
+          <a
+            href="https://www.google.com/maps/place/Quincaillerie+SME/@33.8657526,10.8112892,4010m/data=!3m1!1e3!4m6!3m5!1s0x13aaa53d7e6eb9eb:0x9a55df62f04cf5c5!8m2!3d33.8749777!4d10.869335!16s%2Fg%2F11sv755qjt"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="action-pill action-primary"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>ITINÉRAIRE MAPS</span>
+          </a>
+
+          <a href="tel:+21623435363" class="action-pill action-secondary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>23 435 363</span>
+          </a>
+
+          <button type="button" class="action-pill action-ghost" id="toggle-lighting-btn" aria-pressed="false" title="Basculer l'éclairage 3D de Fix-It Felix">
+            <span class="flare-dot" aria-hidden="true"></span>
+            <span id="lighting-label">LUMIÈRE : NOIR STUDIO</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom 3-Column Feature Strip (aligned with Columns 2, 3, 4 like THE MOON / THE SUN / MARS) -->
+    <footer class="hero-footer" aria-label="Informations clés Quincaillerie SME">
+      <div class="footer-grid">
+        <article class="footer-item footer-col-2" data-slide-trigger="0">
+          <h2 class="footer-heading">TAOURIT • HOUMT SOUK</h2>
+          <p class="footer-copy">
+            Situé à Taourit, Houmt Souk 4180 (VVF9+XP). Ouvert tous les jours jusqu’à 20h00 avec note 5.0 ★ sur Google.
+          </p>
+        </article>
+
+        <article class="footer-item footer-col-3" data-slide-trigger="1">
+          <h2 class="footer-heading">OUTILLAGE &amp; CHANTIER</h2>
+          <p class="footer-copy">
+            Brouettes, grillages, peintures, plomberie, électricité et outillage robuste pour tout réparer comme Fix-It Felix.
+          </p>
+        </article>
+
+        <article class="footer-item footer-col-4" data-slide-trigger="2">
+          <h2 class="footer-heading">LIVRAISON DJERBA</h2>
+          <p class="footer-copy">
+            Service de livraison rapide à domicile et sur chantier partout à Houmt Souk. Contact direct : 23 435 363.
+          </p>
+        </article>
+      </div>
+    </footer>
+
+    <!-- Interactive 3D Hint Badge (Bottom Left) -->
+    <div class="interaction-hint" aria-hidden="true">
+      <span class="hint-dot"></span>
+      <span>GLISSER POUR PIVOTER FIX-IT FELIX 3D</span>
+    </div>
+  </div>
+
+  <!-- Native Modal Dialog (closedby="any" for light-dismiss per Modern Web Guidance) -->
+  <dialog class="sme-dialog" id="sme-dialog" closedby="any" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-header">
+        <div>
+          <p class="dialog-eyebrow">FICHE OFFICIELLE GOOGLE MAPS • DJERBA</p>
+          <h2 id="dialog-title" class="dialog-title">Quincaillerie SME</h2>
+        </div>
+        <form method="dialog">
+          <button type="submit" class="dialog-close" aria-label="Fermer la fenêtre">✕</button>
+        </form>
+      </div>
+
+      <div class="dialog-rating-bar">
+        <span class="rating-score">5,0</span>
+        <span class="rating-stars" aria-label="5 étoiles sur 5">★★★★★</span>
+        <span class="rating-count">(4 avis vérifiés) • Quincaillerie</span>
+        <span class="status-badge">✓ Livraison disponible</span>
+      </div>
+
+      <div class="dialog-grid">
+        <div class="dialog-card">
+          <h3>Adresse &amp; Plus Code</h3>
+          <p><strong>Taourit, Houmt Souk 4180</strong></p>
+          <p class="muted">Code Plus : VVF9+XP Houmt Souk, Djerba, Tunisie</p>
+          <p class="muted">Coordonnées GPS : 33.8749777° N, 10.869335° E</p>
+        </div>
+
+        <div class="dialog-card">
+          <h3>Horaires &amp; Contact Direct</h3>
+          <p><span class="open-pill">Ouvert</span> · Ferme à <strong>20:00</strong></p>
+          <p>Téléphone : <a href="tel:+21623435363" class="inline-link">+216 23 435 363</a></p>
+          <p class="muted">Conseils techniques, devis matériaux &amp; livraison sur chantier.</p>
+        </div>
+
+        <div class="dialog-card dialog-card-wide">
+          <h3>Équipements &amp; Rayons Disponibles</h3>
+          <ul class="equipment-tags">
+            <li>Brouettes &amp; Matériel BTP</li>
+            <li>Grillages &amp; Clôtures</li>
+            <li>Outillage Manuel &amp; Électroportatif</li>
+            <li>Peintures &amp; Enduits</li>
+            <li>Plomberie &amp; Tuyauterie</li>
+            <li>Électricité &amp; Éclairage</li>
+            <li>Quincaillerie Générale &amp; Fixations</li>
+            <li>Tamis, Pelles &amp; Échelles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dialog-footer">
+        <a
+          href="https://www.google.com/maps/place/Quincaillerie+SME/@33.8657526,10.8112892,4010m/data=!3m1!1e3!4m6!3m5!1s0x13aaa53d7e6eb9eb:0x9a55df62f04cf5c5!8m2!3d33.8749777!4d10.869335!16s%2Fg%2F11sv755qjt"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-pill action-primary"
+        >
+          OUVRIR SUR GOOGLE MAPS (33.8750, 10.8693)
+        </a>
+        <a href="tel:+21623435363" class="action-pill action-secondary">
+          APPELER LE 23 435 363
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
