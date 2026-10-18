@@ -3,56 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quincaillerie SME — Taourit, Houmt Souk 4180, Djerba</title>
-  <meta name="description" content="Quincaillerie SME à Taourit, Houmt Souk 4180, Djerba. Outillage professionnel, matériaux de construction, peinture, plomberie, brouettes et livraison sur chantier. Tél: 23 435 363.">
-  <link rel="preload" href="/models/fix_it_felix.glb" as="fetch" crossorigin fetchpriority="high">
+  <title>Quincaillerie SME Djerba — Outillage, BTP & Livraison à Houmt Souk 4180</title>
+  <meta name="description" content="Quincaillerie SME à Taourit, Houmt Souk 4180, Djerba. Outillage professionnel, matériaux de construction, brouettes, grillages, peinture, plomberie et livraison sur chantier jusqu'à 20h00. Tél: 23 435 363.">
+  <link rel="preload" href="/models/construction_worker_in_training.glb" as="fetch" crossorigin fetchpriority="high">
+  <link rel="preload" href="/images/sme-storefront.png" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
-  <div class="hero-stage" id="hero-stage">
-    <!-- Architectural 4-Column Vertical Grid Overlay -->
-    <div class="grid-backdrop" aria-hidden="true">
-      <div class="grid-col grid-col-1"></div>
-      <div class="grid-col grid-col-2"></div>
-      <div class="grid-col grid-col-3 monolith-panel"></div>
-      <div class="grid-col grid-col-4"></div>
-    </div>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>
 
-    <!-- Ambient Particle Field Canvas -->
-    <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
-
-    <!-- 3D WebGL Canvas for Fix-It Felix GLB Model -->
-    <div class="model-viewport" id="model-viewport">
-      <canvas id="felix-canvas" aria-label="Modèle 3D interactif Fix-It Felix — Mascotte Quincaillerie SME"></canvas>
-
-      <!-- Signature Anamorphic Optical Flare (tracks 3D model highlight) -->
-      <div class="optical-flare" id="optical-flare" aria-hidden="true">
-        <div class="flare-halo"></div>
-        <div class="flare-ring"></div>
-        <div class="flare-streak-h"></div>
-        <div class="flare-streak-v"></div>
-        <div class="flare-core"></div>
-      </div>
-
-      <!-- Loading Indicator -->
-      <div class="model-loader" id="model-loader" role="status" aria-live="polite">
-        <span class="loader-ring" aria-hidden="true"></span>
-        <span class="loader-text">CHARGEMENT 3D FIX-IT FELIX...</span>
-      </div>
-    </div>
-
-    <!-- Top Navigation Bar aligned to architectural grid -->
-    <header class="hero-header">
-      <!-- Top-Left Circular Seal Emblem (inspired by reference image) -->
-      <a href="#hero-stage" class="seal-badge" aria-label="Quincaillerie SME Djerba — Accueil">
+  <!-- State-Aware Sticky Header Container (Modern Web Guidance: state-aware-sticky-headers) -->
+  <div class="sticky-nav-container">
+    <header class="hero-header" id="site-header">
+      <!-- Top-Left Circular Seal Emblem -->
+      <a href="#hero-stage" class="seal-badge" aria-label="Quincaillerie SME Djerba — Retour en haut">
         <svg class="seal-svg" viewBox="0 0 120 120" role="img" aria-label="Sceau Quincaillerie SME Djerba">
           <defs>
             <path id="sealTextPath" d="M 60, 60 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
           </defs>
-          <!-- Outer precision radial ticks -->
           <g class="seal-ticks" stroke="rgba(255,255,255,0.42)" stroke-width="1" aria-hidden="true">
             <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.28)" stroke-dasharray="1.5 4.2" stroke-width="3.5" />
           </g>
@@ -69,19 +41,26 @@
       <nav class="hero-nav" aria-label="Navigation principale">
         <ul class="nav-list">
           <li class="nav-item nav-col-3-start">
-            <button type="button" class="nav-link" data-open-dialog="about">_À PROPOS</button>
+            <a href="#vitrine" class="nav-link">_IMMERSION</a>
           </li>
           <li class="nav-item nav-col-3-mid">
-            <button type="button" class="nav-link" data-open-dialog="contact">_CONTACT</button>
+            <a href="#produits" class="nav-link">_PRODUITS</a>
           </li>
           <li class="nav-item nav-col-4-start">
-            <button type="button" class="nav-link" data-open-dialog="map">_LOCALISATION</button>
+            <a href="#services" class="nav-link">_SERVICES</a>
+          </li>
+          <li class="nav-item nav-col-4-mid">
+            <a href="#faq" class="nav-link">_FAQ</a>
           </li>
         </ul>
       </nav>
 
-      <!-- Top-Right Hamburger Button with Coral-Red Dot -->
+      <!-- Top-Right Action & Hamburger Button with Coral-Red Dot -->
       <div class="header-menu-zone">
+        <button type="button" class="wave-trigger-pill" id="header-wave-btn">
+          <span class="wave-emoji" aria-hidden="true">👋</span>
+          <span>SALUER LE CHEF 3D</span>
+        </button>
         <button type="button" class="menu-trigger" id="menu-trigger" aria-label="Ouvrir la fiche complète Quincaillerie SME" data-open-dialog="all">
           <span class="menu-bar bar-1" aria-hidden="true"></span>
           <span class="menu-bar bar-2" aria-hidden="true"></span>
@@ -90,116 +69,817 @@
         </button>
       </div>
     </header>
-
-    <!-- Left Vertical Slide Pagination (- 01 / - 02 / - 03) -->
-    <aside class="side-pagination" aria-label="Sélection de vue 3D et chapitre">
-      <ul class="page-list">
-        <li>
-          <button type="button" class="page-btn active" data-slide="0" aria-label="Chapitre 01 : Quincaillerie SME Djerba" aria-current="true">
-            <span class="page-tick" aria-hidden="true"></span>
-            <span class="page-num">01</span>
-          </button>
-        </li>
-        <li class="page-divider" aria-hidden="true"><span class="page-subtick"></span></li>
-        <li>
-          <button type="button" class="page-btn" data-slide="1" aria-label="Chapitre 02 : Outillage & Matériaux BTP">
-            <span class="page-tick" aria-hidden="true"></span>
-            <span class="page-num">02</span>
-          </button>
-        </li>
-        <li class="page-divider" aria-hidden="true"><span class="page-subtick"></span></li>
-        <li>
-          <button type="button" class="page-btn" data-slide="2" aria-label="Chapitre 03 : Livraison Houmt Souk">
-            <span class="page-tick" aria-hidden="true"></span>
-            <span class="page-num">03</span>
-          </button>
-        </li>
-      </ul>
-    </aside>
-
-    <!-- Main Editorial Content Block (Right Half, aligned to Column 3) -->
-    <main class="hero-main">
-      <div class="editorial-block">
-        <!-- Step Progress 01 —— 03 -->
-        <div class="step-indicator" aria-live="polite">
-          <span class="step-current" id="step-current">01</span>
-          <span class="step-line" aria-hidden="true"></span>
-          <span class="step-total">03</span>
-        </div>
-
-        <!-- Primary Serif Display Heading -->
-        <h1 class="hero-title" id="hero-title">
-          <span class="title-line" id="title-line-1">Quincaillerie</span>
-          <span class="title-line" id="title-line-2">SME Djerba.</span>
-        </h1>
-
-        <!-- Editorial Lead inside the Monolith Column -->
-        <p class="hero-description" id="hero-description">
-          La référence de l’outillage professionnel, du bricolage et des matériaux de construction à Taourit, Houmt Souk 4180. Qualité certifiée 5.0★ et livraison directe sur vos chantiers à Djerba.
-        </p>
-
-        <!-- Subtle Editorial Action Controls -->
-        <div class="hero-actions">
-          <a
-            href="https://www.google.com/maps/place/Quincaillerie+SME/@33.8657526,10.8112892,4010m/data=!3m1!1e3!4m6!3m5!1s0x13aaa53d7e6eb9eb:0x9a55df62f04cf5c5!8m2!3d33.8749777!4d10.869335!16s%2Fg%2F11sv755qjt"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="action-pill action-primary"
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span>ITINÉRAIRE MAPS</span>
-          </a>
-
-          <a href="tel:+21623435363" class="action-pill action-secondary">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span>23 435 363</span>
-          </a>
-
-          <button type="button" class="action-pill action-ghost" id="toggle-lighting-btn" aria-pressed="false" title="Basculer l'éclairage 3D de Fix-It Felix">
-            <span class="flare-dot" aria-hidden="true"></span>
-            <span id="lighting-label">LUMIÈRE : NOIR STUDIO</span>
-          </button>
-        </div>
-      </div>
-    </main>
-
-    <!-- Bottom 3-Column Feature Strip (aligned with Columns 2, 3, 4 like THE MOON / THE SUN / MARS) -->
-    <footer class="hero-footer" aria-label="Informations clés Quincaillerie SME">
-      <div class="footer-grid">
-        <article class="footer-item footer-col-2" data-slide-trigger="0">
-          <h2 class="footer-heading">TAOURIT • HOUMT SOUK</h2>
-          <p class="footer-copy">
-            Situé à Taourit, Houmt Souk 4180 (VVF9+XP). Ouvert tous les jours jusqu’à 20h00 avec note 5.0 ★ sur Google.
-          </p>
-        </article>
-
-        <article class="footer-item footer-col-3" data-slide-trigger="1">
-          <h2 class="footer-heading">OUTILLAGE &amp; CHANTIER</h2>
-          <p class="footer-copy">
-            Brouettes, grillages, peintures, plomberie, électricité et outillage robuste pour tout réparer comme Fix-It Felix.
-          </p>
-        </article>
-
-        <article class="footer-item footer-col-4" data-slide-trigger="2">
-          <h2 class="footer-heading">LIVRAISON DJERBA</h2>
-          <p class="footer-copy">
-            Service de livraison rapide à domicile et sur chantier partout à Houmt Souk. Contact direct : 23 435 363.
-          </p>
-        </article>
-      </div>
-    </footer>
-
-    <!-- Interactive 3D Hint Badge (Bottom Left) -->
-    <div class="interaction-hint" aria-hidden="true">
-      <span class="hint-dot"></span>
-      <span>GLISSER POUR PIVOTER FIX-IT FELIX 3D</span>
-    </div>
   </div>
+
+  <main>
+    <!-- =====================================================================
+         SECTION 1: 3D HERO STAGE (Inspired by Space Exploration Reference)
+         ===================================================================== -->
+    <section class="hero-stage" id="hero-stage" aria-label="Présentation 3D Quincaillerie SME Djerba">
+      <!-- Architectural 4-Column Vertical Grid Overlay -->
+      <div class="grid-backdrop" aria-hidden="true">
+        <div class="grid-col grid-col-1"></div>
+        <div class="grid-col grid-col-2"></div>
+        <div class="grid-col grid-col-3 monolith-panel"></div>
+        <div class="grid-col grid-col-4"></div>
+      </div>
+
+      <!-- Ambient Particle Field Canvas -->
+      <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+
+      <!-- 3D WebGL Canvas for Construction Worker in Training GLB Model -->
+      <div class="model-viewport" id="model-viewport">
+        <canvas id="felix-canvas" aria-label="Modèle 3D interactif Chef de Chantier — Quincaillerie SME Djerba"></canvas>
+
+        <!-- Dynamic 3D-Tracked Greeting Badge attached to Worker's Helmet -->
+        <div class="worker-speech-badge" id="worker-speech-badge" aria-live="polite">
+          <span class="speech-wave-icon" aria-hidden="true">👋</span>
+          <div class="speech-content">
+            <span class="speech-tag">CHEF DE CHANTIER SME • TAOURIT</span>
+            <span class="speech-text" id="worker-speech-text">Marhba ! Scrollez ou cliquez pour me saluer !</span>
+          </div>
+        </div>
+
+        <!-- Signature Anamorphic Optical Flare (tracks 3D model highlight) -->
+        <div class="optical-flare" id="optical-flare" aria-hidden="true">
+          <div class="flare-halo"></div>
+          <div class="flare-ring"></div>
+          <div class="flare-streak-h"></div>
+          <div class="flare-streak-v"></div>
+          <div class="flare-core"></div>
+        </div>
+
+        <!-- Loading Indicator with Live Progress Percentage -->
+        <div class="model-loader" id="model-loader" role="status" aria-live="polite">
+          <span class="loader-ring" aria-hidden="true"></span>
+          <span class="loader-text" id="loader-text">CHARGEMENT DU MODÈLE 3D...</span>
+        </div>
+      </div>
+
+      <!-- Left Vertical Slide Pagination (- 01 / - 02 / - 03) -->
+      <aside class="side-pagination" aria-label="Sélection de vue 3D et chapitre">
+        <ul class="page-list">
+          <li>
+            <button type="button" class="page-btn active" data-slide="0" aria-label="Chapitre 01 : Quincaillerie SME Djerba" aria-current="true">
+              <span class="page-tick" aria-hidden="true"></span>
+              <span class="page-num">01</span>
+            </button>
+          </li>
+          <li class="page-divider" aria-hidden="true"><span class="page-subtick"></span></li>
+          <li>
+            <button type="button" class="page-btn" data-slide="1" aria-label="Chapitre 02 : Outillage & Matériaux BTP">
+              <span class="page-tick" aria-hidden="true"></span>
+              <span class="page-num">02</span>
+            </button>
+          </li>
+          <li class="page-divider" aria-hidden="true"><span class="page-subtick"></span></li>
+          <li>
+            <button type="button" class="page-btn" data-slide="2" aria-label="Chapitre 03 : Livraison Houmt Souk">
+              <span class="page-tick" aria-hidden="true"></span>
+              <span class="page-num">03</span>
+            </button>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main Editorial Content Block (Right Half, aligned to Column 3) -->
+      <div class="hero-main">
+        <div class="editorial-block">
+          <!-- Step Progress 01 —— 03 -->
+          <div class="step-indicator" aria-live="polite">
+            <span class="step-current" id="step-current">01</span>
+            <span class="step-line" aria-hidden="true"></span>
+            <span class="step-total">03</span>
+            <span class="step-badge">5.0 ★ GOOGLE MAPS • OUVERTS JUSQU'À 20H00</span>
+          </div>
+
+          <!-- Primary Serif Display Heading -->
+          <h1 class="hero-title" id="hero-title">
+            <span class="title-line" id="title-line-1">Quincaillerie</span>
+            <span class="title-line" id="title-line-2">SME Djerba.</span>
+          </h1>
+
+          <!-- Editorial Lead inside the Monolith Column -->
+          <p class="hero-description" id="hero-description">
+            L’excellence de l’outillage professionnel, du bricolage et des matériaux de construction à Taourit, Houmt Souk 4180. Équipements de chantier certifiés 5.0★ et livraison express sur toute l’île de Djerba.
+          </p>
+
+          <!-- Subtle Editorial Action Controls -->
+          <div class="hero-actions">
+            <a
+              href="https://www.google.com/maps/place/Quincaillerie+SME/@33.8657526,10.8112892,4010m/data=!3m1!1e3!4m6!3m5!1s0x13aaa53d7e6eb9eb:0x9a55df62f04cf5c5!8m2!3d33.8749777!4d10.869335!16s%2Fg%2F11sv755qjt"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="action-pill action-primary"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>ITINÉRAIRE MAPS</span>
+            </a>
+
+            <a href="tel:+21623435363" class="action-pill action-secondary">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>23 435 363</span>
+            </a>
+
+            <button type="button" class="action-pill action-ghost" id="toggle-lighting-btn" aria-pressed="false">
+              <span class="flare-dot" aria-hidden="true"></span>
+              <span id="lighting-label">LUMIÈRE : NOIR STUDIO</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom 3-Column Feature Strip (aligned with Columns 2, 3, 4 like THE MOON / THE SUN / MARS) -->
+      <div class="hero-footer" role="region" aria-label="Points forts Quincaillerie SME">
+        <div class="footer-grid">
+          <article class="footer-item footer-col-2" data-slide-trigger="0">
+            <h2 class="footer-heading">TAOURIT • HOUMT SOUK</h2>
+            <p class="footer-copy">
+              Situé à Taourit, Houmt Souk 4180 (VVF9+XP). Ouvert tous les jours jusqu’à 20h00 avec note 5.0 ★ sur Google.
+            </p>
+          </article>
+
+          <article class="footer-item footer-col-3" data-slide-trigger="1">
+            <h2 class="footer-heading">OUTILLAGE &amp; CHANTIER</h2>
+            <p class="footer-copy">
+              Brouettes, grillages, peintures, plomberie, électricité et outillage robuste sélectionnés pour durer.
+            </p>
+          </article>
+
+          <article class="footer-item footer-col-4" data-slide-trigger="2">
+            <h2 class="footer-heading">LIVRAISON DJERBA</h2>
+            <p class="footer-copy">
+              Service de livraison rapide à domicile et sur chantier partout à Houmt Souk. Contact direct : 23 435 363.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Interactive 3D Hint & Scroll Prompt (Bottom Left) -->
+      <div class="interaction-hint" aria-hidden="true">
+        <span class="hint-dot"></span>
+        <span>SCROLLEZ POUR VOIR LE MODÈLE SALUER &amp; AGRANDIR LA VITRINE 9:16 ↓</span>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 2: 9:16 TO FULLSCREEN SCROLL-EXPANDING PORTAL (#vitrine)
+         ===================================================================== -->
+    <section class="portal-scroll-track" id="vitrine" aria-label="Immersion Visuelle 9:16 vers Plein Écran">
+      <div class="portal-sticky-stage">
+        <!-- Background Architectural Grid inside Portal -->
+        <div class="portal-grid-lines" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Flanking Kinetic Typography (moves outward as 9:16 frame expands to 100vw) -->
+        <div class="portal-flank portal-flank-left" id="portal-flank-left" aria-hidden="true">
+          <span class="flank-eyebrow">01 // TAOURIT 4180</span>
+          <span class="flank-word">DE L’ATELIER</span>
+          <span class="flank-sub">VVF9+XP HOUMT SOUK</span>
+        </div>
+
+        <div class="portal-flank portal-flank-right" id="portal-flank-right" aria-hidden="true">
+          <span class="flank-eyebrow">02 // LIVRAISON 7J/7</span>
+          <span class="flank-word">AU CHANTIER</span>
+          <span class="flank-sub">FERME À 20:00 • 5.0 ★</span>
+        </div>
+
+        <!-- Top Floating Caption before Full Expansion -->
+        <div class="portal-top-prompt" id="portal-top-prompt">
+          <span class="prompt-tag">PORTAIL IMMERSIF 9:16 → PLEIN ÉCRAN</span>
+          <p class="prompt-instruction">Continuez à faire défiler la molette pour déployer la Quincaillerie SME en plein écran</p>
+        </div>
+
+        <!-- The 9:16 Card that smoothly expands to 100vw x 100vh on scroll -->
+        <div class="portal-card-916" id="portal-card">
+          <!-- Media Layers (Storefront + Flagship Hardware Views) -->
+          <div class="portal-media-wrapper" id="portal-media-wrapper">
+            <!-- Slide A: Real Quincaillerie SME Storefront at Taourit, Houmt Souk -->
+            <div class="portal-slide active" data-portal-slide="0">
+              <img
+                src="/images/sme-storefront.png"
+                alt="Façade réelle de la Quincaillerie SME à Taourit, Houmt Souk 4180 avec brouettes, grillages, tuyaux et peintures"
+                class="portal-img"
+                width="900"
+                height="500"
+              >
+              <div class="portal-vignette"></div>
+            </div>
+
+            <!-- Slide B: High-Craft Heavy Hardware & Power Tools -->
+            <div class="portal-slide" data-portal-slide="1">
+              <div class="portal-procedural-scene scene-tools">
+                <img
+                  src="/images/sme-storefront.png"
+                  alt="Rayon outillage et équipements de chantier Quincaillerie SME"
+                  class="portal-img portal-img-zoomed"
+                  width="900"
+                  height="500"
+                >
+                <div class="portal-blueprint-overlay"></div>
+              </div>
+              <div class="portal-vignette"></div>
+            </div>
+
+            <!-- Slide C: Construction Materials, Wire Mesh & Paint -->
+            <div class="portal-slide" data-portal-slide="2">
+              <div class="portal-procedural-scene scene-materials">
+                <img
+                  src="/images/sme-storefront.png"
+                  alt="Matériaux BTP, brouettes renforcées et peintures chez Quincaillerie SME Djerba"
+                  class="portal-img portal-img-pan"
+                  width="900"
+                  height="500"
+                >
+                <div class="portal-warm-overlay"></div>
+              </div>
+              <div class="portal-vignette"></div>
+            </div>
+          </div>
+
+          <!-- 9:16 Frame Corner HUD Accents (fade out when full screen) -->
+          <div class="frame-corners" id="frame-corners" aria-hidden="true">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
+            <span class="ratio-badge" id="ratio-badge">FORMAT 9:16</span>
+          </div>
+
+          <!-- Interactive Product Hotspots on the Real Storefront (revealed as card expands!) -->
+          <div class="portal-hotspots" id="portal-hotspots">
+            <div class="hotspot-pin" style="left: 24%; top: 72%;">
+              <span class="pin-pulse" aria-hidden="true"></span>
+              <span class="pin-dot" aria-hidden="true">+</span>
+              <div class="pin-card">
+                <strong>Brouettes de Chantier Pro</strong>
+                <span>Cuve renforcée orange &amp; noire • Dispo immédiate</span>
+              </div>
+            </div>
+
+            <div class="hotspot-pin" style="left: 14%; top: 54%;">
+              <span class="pin-pulse" aria-hidden="true"></span>
+              <span class="pin-dot" aria-hidden="true">+</span>
+              <div class="pin-card">
+                <strong>Grillages &amp; Échelles Alu</strong>
+                <span>Rouleaux galvanisés &amp; échelles multi-hauteurs</span>
+              </div>
+            </div>
+
+            <div class="hotspot-pin" style="left: 31%; top: 28%;">
+              <span class="pin-pulse" aria-hidden="true"></span>
+              <span class="pin-dot" aria-hidden="true">+</span>
+              <div class="pin-card">
+                <strong>Tuyauterie &amp; Plomberie</strong>
+                <span>Couronnes haute pression, raccords &amp; accessoires</span>
+              </div>
+            </div>
+
+            <div class="hotspot-pin" style="left: 63%; top: 58%;">
+              <span class="pin-pulse" aria-hidden="true"></span>
+              <span class="pin-dot" aria-hidden="true">+</span>
+              <div class="pin-card">
+                <strong>Peintures, Enduits &amp; Tamis</strong>
+                <span>Seaux de peinture pro, tamis bois &amp; outillage intérieur</span>
+              </div>
+            </div>
+
+            <div class="hotspot-pin" style="left: 91%; top: 62%;">
+              <span class="pin-pulse" aria-hidden="true"></span>
+              <span class="pin-dot" aria-hidden="true">+</span>
+              <div class="pin-card">
+                <strong>Regards &amp; Coffrets BTP</strong>
+                <span>Équipements d’infrastructure &amp; bâtiment</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fullscreen Expanded Overlay Content (fades in when card reaches 100vw x 100vh) -->
+          <div class="portal-expanded-hud" id="portal-expanded-hud">
+            <div class="expanded-top-bar">
+              <div class="expanded-loc-pill">
+                <span class="live-green-dot" aria-hidden="true"></span>
+                <span>FAÇADE OFFICIELLE • TAOURIT, HOUMT SOUK 4180</span>
+              </div>
+              <div class="expanded-view-switcher" role="group" aria-label="Changer de zoom vitrine">
+                <button type="button" class="view-chip active" data-portal-btn="0">01. Façade Boutique</button>
+                <button type="button" class="view-chip" data-portal-btn="1">02. Zoom Outillage &amp; Peinture</button>
+                <button type="button" class="view-chip" data-portal-btn="2">03. Zoom Brouettes &amp; BTP</button>
+              </div>
+            </div>
+
+            <div class="expanded-bottom-bar">
+              <div class="expanded-headline-box">
+                <p class="expanded-kicker">IMMERSION PLEIN ÉCRAN • QUINCAILLERIE SME</p>
+                <h2 class="expanded-title">Tout pour bâtir, rénover et équiper vos chantiers à Djerba.</h2>
+                <p class="expanded-desc">
+                  Survolez les points lumineux sur notre devanture à Taourit pour inspecter nos équipements en stock, ou poursuivez votre lecture vers notre catalogue complet.
+                </p>
+              </div>
+              <div class="expanded-cta-box">
+                <a href="#produits" class="action-pill action-primary">EXPLORER LES PRODUITS ↓</a>
+                <a href="tel:+21623435363" class="action-pill action-secondary">COMMANDER : 23 435 363</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 3: CATALOGUE & PRODUITS PHARES (#produits)
+         ===================================================================== -->
+    <section class="content-section products-section" id="produits" aria-labelledby="products-heading">
+      <div class="section-container">
+        <div class="section-header-row scroll-reveal">
+          <div>
+            <p class="section-eyebrow">02 ─── 05 // CATALOGUE &amp; STOCK TAOURIT</p>
+            <h2 id="products-heading" class="section-title">Nos Rayons &amp; Produits Phares.</h2>
+          </div>
+          <p class="section-lead">
+            Sélectionnés pour résister aux exigences des chantiers et au climat insulaire de Djerba. Disponibles immédiatement en magasin à Taourit ou livrés chez vous.
+          </p>
+        </div>
+
+        <!-- Filter & Search Bar (<search> semantic element per Modern Web Guidance) -->
+        <div class="catalog-toolbar scroll-reveal">
+          <div class="category-pills" role="group" aria-label="Filtrer par catégorie de produits">
+            <button type="button" class="cat-pill active" data-filter="all">Tous les rayons (8)</button>
+            <button type="button" class="cat-pill" data-filter="btp">Chantier &amp; BTP</button>
+            <button type="button" class="cat-pill" data-filter="outillage">Outillage Pro</button>
+            <button type="button" class="cat-pill" data-filter="peinture">Peinture &amp; Finition</button>
+            <button type="button" class="cat-pill" data-filter="plomberie">Plomberie &amp; Élec</button>
+          </div>
+
+          <search class="catalog-search">
+            <label for="product-search-input" class="sr-only">Rechercher un produit ou outil</label>
+            <input
+              type="search"
+              id="product-search-input"
+              class="search-input"
+              placeholder="Rechercher (ex: brouette, grillage, peinture...)"
+            >
+          </search>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Product 1 -->
+          <article class="product-card scroll-reveal" data-category="btp" data-keywords="brouette chantier roue gonflable maçonnerie orange">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-01</span>
+              <span class="stock-tag">En Stock • Livraison</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="17" cy="18" r="3"></circle>
+                <path d="M2 5h3l2 9h10l3-6H6"></path>
+                <path d="M7 14l-2 5h4"></path>
+              </svg>
+            </div>
+            <h3 class="product-name">Brouettes de Chantier Renforcées</h3>
+            <p class="product-desc">
+              Cuve acier haute résistance (époxy orange ou galvanisée), châssis tubulaire renforcé et roue pneumatique tout-terrain pour maçonnerie et jardin.
+            </p>
+            <ul class="product-specs">
+              <li>Capacité : 90L – 110L</li>
+              <li>Châssis : Acier Ø32mm</li>
+              <li>Usage : Intensif BTP</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card scroll-reveal" data-category="btp" data-keywords="grillage cloture rouleau galvanise maille fer">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-02</span>
+              <span class="stock-tag">En Stock • Découpe</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path>
+              </svg>
+            </div>
+            <h3 class="product-name">Grillages &amp; Clôtures Galvanisés</h3>
+            <p class="product-desc">
+              Rouleaux de grillage simple torsion, maille soudée et tamis métalliques traités anti-corrosion contre l’humidité marine de Djerba.
+            </p>
+            <ul class="product-specs">
+              <li>Hauteurs : 1m00 à 2m00</li>
+              <li>Traitement : Galva / Plastifié</li>
+              <li>Vente : Au rouleau ou mètre</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card scroll-reveal" data-category="peinture" data-keywords="peinture enduit facade acrylique etancheite pinceau rouleau">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-03</span>
+              <span class="stock-tag">En Stock • Conseil Pro</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+                <path d="M12 11v4a2 2 0 0 0 2 2h0a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </div>
+            <h3 class="product-name">Peintures Façades, Intérieur &amp; Enduits</h3>
+            <p class="product-desc">
+              Peintures acryliques blanches et teintées, revêtements d’étanchéité toiture, enduits de lissage, rouleaux et brosses professionnelles.
+            </p>
+            <ul class="product-specs">
+              <li>Conditionnement : 1kg à 25kg</li>
+              <li>Protection : Anti-UV &amp; Salinité</li>
+              <li>Accessoires : Rouleaux, bâches, rubans</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card scroll-reveal" data-category="outillage" data-keywords="echelle escabeau aluminium tamis pelle rateau truelle">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-04</span>
+              <span class="stock-tag">En Stock • Taourit</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 3v18M16 3v18M8 7h8M8 12h8M8 17h8"></path>
+              </svg>
+            </div>
+            <h3 class="product-name">Échelles Alu, Tamis Bois &amp; Outillage</h3>
+            <p class="product-desc">
+              Escabeaux et échelles articulées en aluminium, tamis de sable traditionnels en bois, pelles, râteaux, fourches, masses et truelles.
+            </p>
+            <ul class="product-specs">
+              <li>Échelles : 3 à 12 marches</li>
+              <li>Tamis : Mailles fines &amp; moyennes</li>
+              <li>Outils : Manches bois &amp; fibre</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card scroll-reveal" data-category="plomberie" data-keywords="tuyau arrosage plomberie raccord eau pompe">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-05</span>
+              <span class="stock-tag">En Stock • Taourit</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+            </div>
+            <h3 class="product-name">Tuyauterie, Arrosage &amp; Plomberie</h3>
+            <p class="product-desc">
+              Couronnes de tuyaux souples et PEHD, raccords laiton/PVC, vannes d’arrêt, robinetterie, siphons et colles haute pression.
+            </p>
+            <ul class="product-specs">
+              <li>Diamètres : Ø15mm à Ø110mm</li>
+              <li>Pression : Jusqu’à 16 bars</li>
+              <li>Norme : Sanitaire &amp; Irrigation</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card scroll-reveal" data-category="outillage" data-keywords="perceuse disqueuse meuleuse visserie boulonnerie serrure">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-06</span>
+              <span class="stock-tag">En Stock • Garantie</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <h3 class="product-name">Outillage Électroportatif &amp; Fixations</h3>
+            <p class="product-desc">
+              Disques diamant, forets béton/métal, visserie inox, chevilles chimiques, serrures de sécurité, cadenas et quincaillerie de bâtiment.
+            </p>
+            <ul class="product-specs">
+              <li>Visserie : Inox A2/A4 &amp; Acier zingué</li>
+              <li>Consommables : Disques Ø115 / Ø230</li>
+              <li>Sécurité : Cylindres &amp; verrous</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 7 -->
+          <article class="product-card scroll-reveal" data-category="btp" data-keywords="regard boite branchement ciment evacuations btp">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-07</span>
+              <span class="stock-tag">En Stock • Livraison</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="product-name">Regards, Boîtes de Branchement &amp; VRD</h3>
+            <p class="product-desc">
+              Regards d’évacuation préfabriqués, trappes de visite, grilles pluviales et accessoires d’assainissement visibles sur notre parvis à Taourit.
+            </p>
+            <ul class="product-specs">
+              <li>Dimensions : 25×25 à 50×50 cm</li>
+              <li>Matériau : PVC lourd / Composite</li>
+              <li>Usage : Assainissement &amp; Réseaux</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+
+          <!-- Product 8 -->
+          <article class="product-card scroll-reveal" data-category="plomberie" data-keywords="electricite cable gaine coffret tableau eclairage">
+            <div class="product-card-top">
+              <span class="product-index">REF // SME-08</span>
+              <span class="stock-tag">En Stock • Taourit</span>
+            </div>
+            <div class="product-icon-box" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="product-name">Électricité, Coffrets &amp; Éclairage</h3>
+            <p class="product-desc">
+              Gaines ICTA/annulées, coffrets électriques muraux, câbles, prises étanches, projecteurs LED de chantier et appareillage modulaire.
+            </p>
+            <ul class="product-specs">
+              <li>Protection : Coffrets IP55 / IP65</li>
+              <li>Éclairage : Projecteurs LED 20W–100W</li>
+              <li>Normes : Bâtiment &amp; Domestique</li>
+            </ul>
+            <div class="product-footer">
+              <a href="tel:+21623435363" class="product-cta">Demander prix / Livraison →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 4: NOS SERVICES SUR MESURE (#services)
+         ===================================================================== -->
+    <section class="content-section services-section" id="services" aria-labelledby="services-heading">
+      <div class="section-container">
+        <div class="section-header-row scroll-reveal">
+          <div>
+            <p class="section-eyebrow">03 ─── 05 // ENGAGEMENTS &amp; LOGISTIQUE</p>
+            <h2 id="services-heading" class="section-title">Services Taillés pour vos Chantiers.</h2>
+          </div>
+          <p class="section-lead">
+            Plus qu’un magasin d’outillage : Quincaillerie SME accompagne les artisans, maçons, peintres, plombiers et particuliers de Djerba au quotidien.
+          </p>
+        </div>
+
+        <div class="services-bento">
+          <article class="service-card service-card-featured scroll-reveal">
+            <div class="service-num">SERVICE // 01</div>
+            <h3 class="service-title">Livraison Express sur Chantier &amp; à Domicile</h3>
+            <p class="service-body">
+              Ne perdez plus une heure sur votre chantier. Appelez le <strong>23 435 363</strong> et recevez vos brouettes, rouleaux de grillage, seaux de peinture, regards et matériaux directement à Taourit, Houmt Souk et sur toute l’île de Djerba.
+            </p>
+            <div class="service-meta-row">
+              <span class="service-chip">✓ Livraison confirmée Google Maps</span>
+              <span class="service-chip">✓ Camionnette &amp; Utilitaires</span>
+              <span class="service-chip">✓ Houmt Souk 4180 &amp; Alentours</span>
+            </div>
+          </article>
+
+          <article class="service-card scroll-reveal">
+            <div class="service-num">SERVICE // 02</div>
+            <h3 class="service-title">Ouverture Continue jusqu’à 20h00</h3>
+            <p class="service-body">
+              Une urgence plomberie, électricité ou un manque de matériaux en fin d’après-midi ? Notre quincaillerie à Taourit reste ouverte jusqu’à <strong>20h00</strong> pour vous dépanner sans interruption.
+            </p>
+          </article>
+
+          <article class="service-card scroll-reveal">
+            <div class="service-num">SERVICE // 03</div>
+            <h3 class="service-title">Découpe &amp; Préparation sur Mesure</h3>
+            <p class="service-body">
+              Découpe au mètre de grillages, tuyaux d’arrosage, gaines électriques, cordages et câbles selon les dimensions exactes de votre projet.
+            </p>
+          </article>
+
+          <article class="service-card scroll-reveal">
+            <div class="service-num">SERVICE // 04</div>
+            <h3 class="service-title">Conseil Technique Climat Insulaire</h3>
+            <p class="service-body">
+              À Djerba, le sel et l’humidité exigent des matériaux adaptés. Nous vous orientons vers les peintures façades, visseries inox et traitements anti-rouille les plus durables.
+            </p>
+          </article>
+
+          <article class="service-card scroll-reveal">
+            <div class="service-num">SERVICE // 05</div>
+            <h3 class="service-title">Devis Rapide Artisans &amp; Particuliers</h3>
+            <p class="service-body">
+              Préparation rapide de vos listes complètes de matériaux pour construction neuve, rénovation de menzel, clôture de terrain ou entretien saisonnier.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 5: FAQ EXCLUSIVE ACCORDION (#faq)
+         (Modern Web Guidance: Native <details name="sme-faq"> & <summary>)
+         ===================================================================== -->
+    <section class="content-section faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="section-container">
+        <div class="section-header-row scroll-reveal">
+          <div>
+            <p class="section-eyebrow">04 ─── 05 // QUESTIONS FRÉQUENTES</p>
+            <h2 id="faq-heading" class="section-title">Tout Savoir sur Quincaillerie SME.</h2>
+          </div>
+          <p class="section-lead">
+            Réponses immédiates aux questions les plus fréquentes concernant notre magasin à Taourit, nos livraisons et nos équipements.
+          </p>
+        </div>
+
+        <div class="faq-list scroll-reveal">
+          <details class="faq-item" name="sme-faq" open>
+            <summary class="faq-summary">
+              <span class="faq-q-num">01</span>
+              <span class="faq-q-text">Où se situe exactement la Quincaillerie SME à Djerba ?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Nous sommes situés à <strong>Taourit, Houmt Souk 4180, Djerba</strong> (Code Plus Google Maps : <code>VVF9+XP Houmt Souk</code>, coordonnées GPS exactes : <code>33.8749777, 10.869335</code>). L’accès est direct en voiture ou camionnette avec stationnement facile devant la boutique pour le chargement de matériaux lourds.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="sme-faq">
+            <summary class="faq-summary">
+              <span class="faq-q-num">02</span>
+              <span class="faq-q-text">Proposez-vous la livraison à domicile ou sur chantier à Djerba ?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Oui ! <strong>Quincaillerie SME assure la livraison</strong> à domicile et directement sur vos chantiers à Taourit, Houmt Souk et dans toute l’île de Djerba. Vous pouvez commander vos brouettes, rouleaux de grillage, sacs, regards ou seaux de peinture par téléphone au <strong>23 435 363</strong>.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="sme-faq">
+            <summary class="faq-summary">
+              <span class="faq-q-num">03</span>
+              <span class="faq-q-text">Quels sont vos horaires d’ouverture ?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Notre magasin est <strong>ouvert tous les jours jusqu’à 20h00</strong>, ce qui permet aux professionnels du bâtiment comme aux particuliers de s’approvisionner tôt le matin comme en fin de journée.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="sme-faq">
+            <summary class="faq-summary">
+              <span class="faq-q-num">04</span>
+              <span class="faq-q-text">Quels types de produits trouve-t-on en stock chez Quincaillerie SME ?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Nous disposons d’un stock complet : <strong>matériel de chantier</strong> (brouettes, échelles alu, tamis en bois, pelles, râteaux), <strong>clôtures</strong> (grillages galvanisés et plastifiés), <strong>peintures &amp; enduits</strong>, <strong>plomberie &amp; arrosage</strong> (tuyaux, raccords, regards), <strong>électricité</strong> (coffrets, gaines, câbles) ainsi que toute la <strong>visserie et quincaillerie générale</strong>.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="sme-faq">
+            <summary class="faq-summary">
+              <span class="faq-q-num">05</span>
+              <span class="faq-q-text">Comment vérifier la disponibilité d’un article ou demander un devis ?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Il vous suffit de nous appeler directement au <strong>+216 23 435 363</strong>. Notre équipe vérifie immédiatement la disponibilité en rayon à Taourit, prépare votre commande et organise la livraison si nécessaire.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 6: LOCALISATION & CONTACT DIRECT (#contact)
+         ===================================================================== -->
+    <section class="content-section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="section-container">
+        <div class="contact-card-split scroll-reveal">
+          <div class="contact-info-col">
+            <p class="section-eyebrow">05 ─── 05 // POINT DE VENTE OFFICIEL</p>
+            <h2 id="contact-heading" class="section-title">Visitez Quincaillerie SME à Taourit.</h2>
+            <p class="contact-sub">
+              Noté <strong>5,0 ★★★★★ (4 avis)</strong> sur Google Maps. Venez découvrir notre stock sur place ou appelez-nous pour une livraison rapide.
+            </p>
+
+            <dl class="contact-details-list">
+              <div class="contact-detail-row">
+                <dt>ADRESSE</dt>
+                <dd>Taourit, Houmt Souk 4180, Djerba, Tunisie</dd>
+              </div>
+              <div class="contact-detail-row">
+                <dt>PLUS CODE &amp; GPS</dt>
+                <dd>VVF9+XP Houmt Souk • <code>33.8749777, 10.869335</code></dd>
+              </div>
+              <div class="contact-detail-row">
+                <dt>HORAIRES</dt>
+                <dd><span class="open-pill">Ouvert</span> · Ferme à 20:00 (Livraison disponible)</dd>
+              </div>
+              <div class="contact-detail-row">
+                <dt>TÉLÉPHONE</dt>
+                <dd><a href="tel:+21623435363" class="contact-phone-big">23 435 363</a></dd>
+              </div>
+            </dl>
+
+            <div class="contact-actions">
+              <a
+                href="https://www.google.com/maps/place/Quincaillerie+SME/@33.8657526,10.8112892,4010m/data=!3m1!1e3!4m6!3m5!1s0x13aaa53d7e6eb9eb:0x9a55df62f04cf5c5!8m2!3d33.8749777!4d10.869335!16s%2Fg%2F11sv755qjt"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="action-pill action-primary"
+              >
+                LANCER L’ITINÉRAIRE GOOGLE MAPS ↗
+              </a>
+              <a href="tel:+21623435363" class="action-pill action-secondary">
+                APPELER LE MAGASIN
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-map-col">
+            <div class="map-frame-wrapper">
+              <iframe
+                title="Carte Google Maps — Quincaillerie SME Taourit, Houmt Souk 4180"
+                src="https://www.google.com/maps?q=33.8749777,10.869335&hl=fr&z=16&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="google-map-iframe"
+              ></iframe>
+              <div class="map-floating-card">
+                <img
+                  src="/images/sme-storefront.png"
+                  alt="Devanture Quincaillerie SME"
+                  width="120"
+                  height="68"
+                  loading="lazy"
+                >
+                <div>
+                  <strong>Quincaillerie SME</strong>
+                  <span>5.0 ★ • Taourit, Houmt Souk 4180</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-bottom-footer">
+    <div class="section-container footer-bottom-inner">
+      <div class="footer-brand">
+        <span class="footer-monogram">SME</span>
+        <span>Quincaillerie SME • Taourit, Houmt Souk 4180, Djerba — Tél : 23 435 363</span>
+      </div>
+      <div class="footer-links">
+        <a href="#hero-stage">Haut de page ↑</a>
+        <a href="#vitrine">Vitrine 9:16</a>
+        <a href="#produits">Produits</a>
+        <a href="#services">Services</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Native Modal Dialog (closedby="any" for light-dismiss per Modern Web Guidance) -->
   <dialog class="sme-dialog" id="sme-dialog" closedby="any" aria-labelledby="dialog-title">
